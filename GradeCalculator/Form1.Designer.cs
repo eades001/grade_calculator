@@ -33,17 +33,18 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.classNameLabel = new System.Windows.Forms.Label();
+            this.semesterLabel = new System.Windows.Forms.Label();
+            this.gradesLabel = new System.Windows.Forms.Label();
+            this.nameValueLabel = new System.Windows.Forms.Label();
+            this.classNameValueLabel = new System.Windows.Forms.Label();
+            this.semesterValueLabel = new System.Windows.Forms.Label();
             this.studentPictureBox = new System.Windows.Forms.PictureBox();
             this.gradesListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.finalGradeLabel = new System.Windows.Forms.Label();
+            this.finalGradeValueLabel = new System.Windows.Forms.Label();
+            this.calculateGradeButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.fileAccessMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -73,14 +74,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -94,68 +95,68 @@
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Student Name";
             // 
-            // label2
+            // classNameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Class Name";
+            this.classNameLabel.AutoSize = true;
+            this.classNameLabel.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.classNameLabel.Location = new System.Drawing.Point(29, 110);
+            this.classNameLabel.Name = "classNameLabel";
+            this.classNameLabel.Size = new System.Drawing.Size(94, 18);
+            this.classNameLabel.TabIndex = 2;
+            this.classNameLabel.Text = "Class Name";
             // 
-            // label3
+            // semesterLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 173);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 18);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Semester";
+            this.semesterLabel.AutoSize = true;
+            this.semesterLabel.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.semesterLabel.Location = new System.Drawing.Point(29, 173);
+            this.semesterLabel.Name = "semesterLabel";
+            this.semesterLabel.Size = new System.Drawing.Size(76, 18);
+            this.semesterLabel.TabIndex = 3;
+            this.semesterLabel.Text = "Semester";
             // 
-            // label4
+            // gradesLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 245);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 18);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Grades";
+            this.gradesLabel.AutoSize = true;
+            this.gradesLabel.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.gradesLabel.Location = new System.Drawing.Point(29, 245);
+            this.gradesLabel.Name = "gradesLabel";
+            this.gradesLabel.Size = new System.Drawing.Size(60, 18);
+            this.gradesLabel.TabIndex = 4;
+            this.gradesLabel.Text = "Grades";
             // 
-            // label5
+            // nameValueLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(47, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 21);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Lynn Eades";
+            this.nameValueLabel.AutoSize = true;
+            this.nameValueLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.nameValueLabel.ForeColor = System.Drawing.Color.Navy;
+            this.nameValueLabel.Location = new System.Drawing.Point(47, 70);
+            this.nameValueLabel.Name = "nameValueLabel";
+            this.nameValueLabel.Size = new System.Drawing.Size(112, 21);
+            this.nameValueLabel.TabIndex = 5;
+            this.nameValueLabel.Text = "Lynn Eades";
             // 
-            // label6
+            // classNameValueLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label6.ForeColor = System.Drawing.Color.Navy;
-            this.label6.Location = new System.Drawing.Point(47, 138);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 21);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "CSharp";
+            this.classNameValueLabel.AutoSize = true;
+            this.classNameValueLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.classNameValueLabel.ForeColor = System.Drawing.Color.Navy;
+            this.classNameValueLabel.Location = new System.Drawing.Point(47, 138);
+            this.classNameValueLabel.Name = "classNameValueLabel";
+            this.classNameValueLabel.Size = new System.Drawing.Size(74, 21);
+            this.classNameValueLabel.TabIndex = 6;
+            this.classNameValueLabel.Text = "CSharp";
             // 
-            // label7
+            // semesterValueLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label7.ForeColor = System.Drawing.Color.Navy;
-            this.label7.Location = new System.Drawing.Point(47, 201);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 21);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Fall 2018";
+            this.semesterValueLabel.AutoSize = true;
+            this.semesterValueLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.semesterValueLabel.ForeColor = System.Drawing.Color.Navy;
+            this.semesterValueLabel.Location = new System.Drawing.Point(47, 201);
+            this.semesterValueLabel.Name = "semesterValueLabel";
+            this.semesterValueLabel.Size = new System.Drawing.Size(86, 21);
+            this.semesterValueLabel.TabIndex = 7;
+            this.semesterValueLabel.Text = "Fall 2018";
             // 
             // studentPictureBox
             // 
@@ -175,37 +176,45 @@
             this.gradesListBox.Size = new System.Drawing.Size(149, 148);
             this.gradesListBox.TabIndex = 9;
             // 
-            // label1
+            // finalGradeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(299, 271);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 24);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Final Grade";
+            this.finalGradeLabel.AutoSize = true;
+            this.finalGradeLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.finalGradeLabel.ForeColor = System.Drawing.Color.Navy;
+            this.finalGradeLabel.Location = new System.Drawing.Point(299, 271);
+            this.finalGradeLabel.Name = "finalGradeLabel";
+            this.finalGradeLabel.Size = new System.Drawing.Size(119, 24);
+            this.finalGradeLabel.TabIndex = 10;
+            this.finalGradeLabel.Text = "Final Grade";
             // 
-            // label8
+            // finalGradeValueLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(333, 305);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 43);
-            this.label8.TabIndex = 11;
+            this.finalGradeValueLabel.AutoSize = true;
+            this.finalGradeValueLabel.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.finalGradeValueLabel.ForeColor = System.Drawing.Color.Black;
+            this.finalGradeValueLabel.Location = new System.Drawing.Point(333, 305);
+            this.finalGradeValueLabel.Name = "finalGradeValueLabel";
+            this.finalGradeValueLabel.Size = new System.Drawing.Size(0, 43);
+            this.finalGradeValueLabel.TabIndex = 11;
             // 
-            // button1
+            // calculateGradeButton
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.button1.Location = new System.Drawing.Point(270, 365);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 41);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Calculate Grade";
-            this.button1.UseVisualStyleBackColor = false;
+            this.calculateGradeButton.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.calculateGradeButton.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.calculateGradeButton.Location = new System.Drawing.Point(270, 365);
+            this.calculateGradeButton.Name = "calculateGradeButton";
+            this.calculateGradeButton.Size = new System.Drawing.Size(169, 41);
+            this.calculateGradeButton.TabIndex = 12;
+            this.calculateGradeButton.Text = "Calculate Grade";
+            this.calculateGradeButton.UseVisualStyleBackColor = false;
+            this.calculateGradeButton.Click += new System.EventHandler(this.calculateGradeButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "txt";
+            this.openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*\"";
+            this.openFileDialog1.InitialDirectory = "s_defaultPath";
+            this.openFileDialog1.Title = "Select a Student File";
             // 
             // Form1
             // 
@@ -213,17 +222,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(496, 454);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.calculateGradeButton);
+            this.Controls.Add(this.finalGradeValueLabel);
+            this.Controls.Add(this.finalGradeLabel);
             this.Controls.Add(this.gradesListBox);
             this.Controls.Add(this.studentPictureBox);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.semesterValueLabel);
+            this.Controls.Add(this.classNameValueLabel);
+            this.Controls.Add(this.nameValueLabel);
+            this.Controls.Add(this.gradesLabel);
+            this.Controls.Add(this.semesterLabel);
+            this.Controls.Add(this.classNameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.fileAccessMenuStrip);
             this.MainMenuStrip = this.fileAccessMenuStrip;
@@ -243,17 +252,18 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label classNameLabel;
+        private System.Windows.Forms.Label semesterLabel;
+        private System.Windows.Forms.Label gradesLabel;
+        private System.Windows.Forms.Label nameValueLabel;
+        private System.Windows.Forms.Label classNameValueLabel;
+        private System.Windows.Forms.Label semesterValueLabel;
         private System.Windows.Forms.PictureBox studentPictureBox;
         private System.Windows.Forms.ListBox gradesListBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label finalGradeLabel;
+        private System.Windows.Forms.Label finalGradeValueLabel;
+        private System.Windows.Forms.Button calculateGradeButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
