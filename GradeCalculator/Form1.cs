@@ -27,9 +27,13 @@ namespace GradeCalculator
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                // Clear grades from previously selected student
+                gradesListBox.Items.Clear();
+
                 // Open the selected file and set up a reader to read the file
                 string fileName = openFileDialog1.FileName;
                 StreamReader inFile = new StreamReader(fileName);
+                string pathToFile = Path.GetDirectoryName(openFileDialog1.FileName);
 
                 // Read the data and separate the data into an array for processing
                 string[] studentData = inFile.ReadLine().Split(',');
@@ -38,7 +42,7 @@ namespace GradeCalculator
                 nameValueLabel.Text = studentData[0];
                 classNameValueLabel.Text = studentData[1];
                 semesterValueLabel.Text = studentData[2];
-                studentPictureBox.ImageLocation = studentData[3];
+                studentPictureBox.Image = Image.FromFile(pathToFile + "\\" + studentData[3]);
 
                 // Grab the grades and add to ListBox with some description text
                 string gradeWithDescription = "";

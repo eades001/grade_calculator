@@ -119,7 +119,7 @@
             // 
             this.gradesLabel.AutoSize = true;
             this.gradesLabel.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.gradesLabel.Location = new System.Drawing.Point(29, 245);
+            this.gradesLabel.Location = new System.Drawing.Point(29, 238);
             this.gradesLabel.Name = "gradesLabel";
             this.gradesLabel.Size = new System.Drawing.Size(60, 18);
             this.gradesLabel.TabIndex = 4;
@@ -163,17 +163,19 @@
             this.studentPictureBox.Location = new System.Drawing.Point(265, 43);
             this.studentPictureBox.Name = "studentPictureBox";
             this.studentPictureBox.Size = new System.Drawing.Size(187, 187);
+            this.studentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.studentPictureBox.TabIndex = 8;
             this.studentPictureBox.TabStop = false;
             // 
             // gradesListBox
             // 
-            this.gradesListBox.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.gradesListBox.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.gradesListBox.FormattingEnabled = true;
-            this.gradesListBox.ItemHeight = 19;
-            this.gradesListBox.Location = new System.Drawing.Point(51, 271);
+            this.gradesListBox.ItemHeight = 18;
+            this.gradesListBox.Location = new System.Drawing.Point(51, 268);
             this.gradesListBox.Name = "gradesListBox";
-            this.gradesListBox.Size = new System.Drawing.Size(166, 156);
+            this.gradesListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.gradesListBox.Size = new System.Drawing.Size(166, 148);
             this.gradesListBox.TabIndex = 9;
             // 
             // finalGradeLabel
@@ -211,7 +213,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.DefaultExt = "*";
+            this.openFileDialog1.DefaultExt = "txt";
             this.openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*\"";
             this.openFileDialog1.InitialDirectory = "s_defaultPath";
             this.openFileDialog1.Title = "Select a Student File";
