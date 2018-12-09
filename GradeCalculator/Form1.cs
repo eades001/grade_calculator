@@ -29,6 +29,7 @@ namespace GradeCalculator
             {
                 // Clear grades from previously selected student
                 gradesListBox.Items.Clear();
+                finalGradeValueLabel.Text = null;
 
                 // Open the selected file and set up a reader to read the file
                 string fileName = openFileDialog1.FileName;
