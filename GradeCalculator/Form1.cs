@@ -60,10 +60,13 @@ namespace GradeCalculator
                     }
                     else
                     {
-                        gradeWithDescription = String.Format(" {0, -10} {1, 4}", "Final", grades[i]);                    }
-
+                        gradeWithDescription = String.Format(" {0, -10} {1, 4}", "Final", grades[i]);
+                    }
                     gradesListBox.Items.Add(gradeWithDescription);
                 }
+
+                // Button is disabled until the grades are loaded and a calculation can be made
+                calculateGradeButton.Enabled = true;
             }
         }
 

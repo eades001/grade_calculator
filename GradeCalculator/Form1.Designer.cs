@@ -202,6 +202,7 @@
             // calculateGradeButton
             // 
             this.calculateGradeButton.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.calculateGradeButton.Enabled = false;
             this.calculateGradeButton.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.calculateGradeButton.Location = new System.Drawing.Point(273, 377);
             this.calculateGradeButton.Name = "calculateGradeButton";
