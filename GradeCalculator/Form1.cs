@@ -81,10 +81,11 @@ namespace GradeCalculator
                 catch (Exception)
                 {
                     // Clear any displayed data that may have been read in incorrectly
-                    nameValueLabel.Text = "";
+                    nameValueLabel.Text = "Select a student file";
                     classNameValueLabel.Text = "";
                     semesterValueLabel.Text = "";
                     studentPictureBox.Image = null;
+                    calculateGradeButton.Enabled = false;
 
                     // Show a message to user that something went wrong reading file or its contents
                     MessageBox.Show("ERROR!\nUnable to read student file or its contents.\nPlease try again.");

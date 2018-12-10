@@ -132,8 +132,9 @@
             this.nameValueLabel.ForeColor = System.Drawing.Color.Navy;
             this.nameValueLabel.Location = new System.Drawing.Point(47, 70);
             this.nameValueLabel.Name = "nameValueLabel";
-            this.nameValueLabel.Size = new System.Drawing.Size(0, 21);
+            this.nameValueLabel.Size = new System.Drawing.Size(183, 21);
             this.nameValueLabel.TabIndex = 5;
+            this.nameValueLabel.Text = "Select a student file";
             // 
             // classNameValueLabel
             // 
