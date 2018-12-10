@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 
 /*****************************************/
-/*  Project 6:   Grade Calculator        */
+/*  Project 6:   Grade Calculator App    */
 /*  Author:      Lynn Eades              */
 /*  Date:        12/10/2018              */
 /*****************************************/
@@ -13,13 +13,15 @@ namespace GradeCalculator
 {
     public partial class Form1 : Form
     {
-        const int TOTAL_GRADE_POINTS_POSSIBLE = 800;
-        int[] grades; // Will hold student's project/exam grades
+        private const int TOTAL_GRADE_POINTS_POSSIBLE = 800;
+
+        private double[] grades;             // Will hold student's project/exam grades
+        private GradeCalculator calculator;  // Handles all the calculations
+        private StreamReader inFile;         // For reading student data from file
 
         public Form1()
         {
             InitializeComponent();
-            grades = new int[8]; // 6 projects + 2 exams
         }
 
         // Open a search file dialog box for selecting a student data file
@@ -27,120 +29,96 @@ namespace GradeCalculator
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                // A container to hold the 8 grades: 6 projects + 2 exams
+                grades = new double[8];
+
                 // Clear grades from previously selected student
                 gradesListBox.Items.Clear();
                 finalGradeValueLabel.Text = null;
 
-                // Open the selected file and set up a reader to read the file
-                string fileName = openFileDialog1.FileName;
-                StreamReader inFile = new StreamReader(fileName);
-                string pathToFile = Path.GetDirectoryName(openFileDialog1.FileName);
-
-                // Read the data and separate the data into an array for processing
-                string[] studentData = inFile.ReadLine().Split(',');
-
-                // Grab the student name, class, semester and picture and populate form
-                nameValueLabel.Text = studentData[0];
-                classNameValueLabel.Text = studentData[1];
-                semesterValueLabel.Text = studentData[2];
-                studentPictureBox.Image = Image.FromFile(pathToFile + "\\" + studentData[3]);
-
-                // Grab the grades and add to ListBox with some description text
-                string gradeWithDescription = "";
-                for (int i=0; i<8; i++)
+                // Wrap the file open and read with a try-catch in case something goes wrong
+                try
                 {
-                    grades[i] = Convert.ToInt32(studentData[i + 4]);
-                    if (i < 6)
+                    // Open the selected file and set up a reader to read the file
+                    string filename = openFileDialog1.FileName;
+                    inFile = new StreamReader(filename);
+                    
+                    // Capture the path to use when retrieving the image file
+                    string pathToFile = Path.GetDirectoryName(openFileDialog1.FileName);
+
+                    // Read the data and separate the data into an array for processing
+                    string[] studentData = inFile.ReadLine().Split(',');
+
+                    // Grab the student name, class, semester and picture and populate form
+                    nameValueLabel.Text = studentData[0];
+                    classNameValueLabel.Text = studentData[1];
+                    semesterValueLabel.Text = studentData[2];
+                    studentPictureBox.Image = Image.FromFile(pathToFile + "\\" + studentData[3]);
+
+                    // Grab the grades and add to ListBox with some description text
+                    for (int i = 0; i < 8; i++)
                     {
-                        gradeWithDescription = String.Format(" {0, -9}{1} {2, 4}", "Project", i+1, grades[i]);
+                        // Collect the grades in a container to use later
+                        grades[i] = Convert.ToDouble(studentData[i + 4]);
                     }
-                    else if (i == 6)
-                    {
-                        gradeWithDescription = String.Format(" {0, -10} {1, 4}", "Midterm", grades[i]);
-                    }
-                    else
-                    {
-                        gradeWithDescription = String.Format(" {0, -10} {1, 4}", "Final", grades[i]);
-                    }
-                    gradesListBox.Items.Add(gradeWithDescription);
+                    PopulateListBox(grades);
+
+                    // Button is disabled until the grades are loaded and a calculation can be made
+                    calculateGradeButton.Enabled = true;
                 }
+                catch (Exception)
+                {
+                    // Clear any displayed data that may have been read in incorrectly
+                    nameValueLabel.Text = "";
+                    classNameValueLabel.Text = "";
+                    semesterValueLabel.Text = "";
+                    studentPictureBox.Image = null;
 
-                // Button is disabled until the grades are loaded and a calculation can be made
-                calculateGradeButton.Enabled = true;
+                    // Show a message to user that something went wrong reading file or contents
+                    MessageBox.Show("ERROR!\nUnable to read student file or its contents.\nPlease try again.");
+                } finally {
+                    // Close the stream
+                    inFile.Close();
+                }
             }
         }
 
-        // Open a search file dialog box for selecting a student data file
-        private void calculateGradeButton_Click(object sender, EventArgs e)
+        // Add list of grades with project/exam description to the listbox
+        private void PopulateListBox(double [] grades)
         {
-            double finalGradePercent = CalculateGrade(grades);
-            char letterGrade = GetLetterGradeForPercentage(finalGradePercent);
-            finalGradeValueLabel.Text = letterGrade.ToString();
-            finalGradeValueLabel.ForeColor = GetColorForGrade(letterGrade);
+            string gradeWithDescription = "";
+            for (int i = 0; i < 8; i++)
+            {
+                if (i < 6)
+                {
+                    gradeWithDescription = String.Format(" {0, -9}{1}   {2,5}", "Project", i + 1, grades[i]);
+                }
+                else if (i == 6)
+                {
+                    gradeWithDescription = String.Format(" {0, -10}   {1,5}", "Midterm", grades[i]);
+                }
+                else
+                {
+                    gradeWithDescription = String.Format(" {0, -10}   {1,5}", "Final", grades[i]);
+                }
+                gradesListBox.Items.Add(gradeWithDescription);
+            }
         }
 
-        // Calculates final grade and returns as a percentage
-        private double CalculateGrade(int[] grades)
+        // Use the grade calculator to get grade percentage, letter value, and color for grade
+        private void CalculateGradeButton_Click(object sender, EventArgs e)
         {
-            double gradeAsPercentage = 0;
-            double finalGrade = 0;
+            // Initialize the GradeCalculator passing the list of grades
+            calculator = new GradeCalculator(grades);
 
-            for(int i=0; i < grades.Length; i++)
-            {
-                finalGrade = finalGrade + grades[i];
-                gradeAsPercentage = finalGrade / TOTAL_GRADE_POINTS_POSSIBLE * 100;
-            }
+            // Do all the calculations
+            double finalGradePercent = calculator.CalculateGradePercentage(TOTAL_GRADE_POINTS_POSSIBLE);
+            string letterGrade = calculator.LetterGradeForPercentage(finalGradePercent);
+            Color gradeColor = calculator.ColorForGrade(letterGrade);
 
-            return gradeAsPercentage;
-        }
-
-        // Returns a letter grade for given grade as a percentage
-        private char GetLetterGradeForPercentage(double gradePercentageValue)
-        {
-            char letterGrade;
-
-            if (gradePercentageValue > 89.0)
-            {
-                letterGrade = 'A';
-            }
-            else if (gradePercentageValue > 89.0)
-            {
-                letterGrade = 'B';
-            } else if (gradePercentageValue > 89.0)
-            {
-                letterGrade = 'C';
-            }
-            else if (gradePercentageValue > 89.0)
-            {
-                letterGrade = 'D';
-            } else
-            {
-                letterGrade = 'F';
-            }
-
-            return letterGrade;
-        }
-
-        // Return color for a letter grade
-        private Color GetColorForGrade(char gradeValue)
-        {
-            Color gradeColor = Color.Green;
-            switch (gradeValue)
-            {
-                case 'A':
-                case 'B':
-                case 'C':
-                    gradeColor = Color.Green;
-                    break;
-                case 'D':
-                    gradeColor = Color.Orange;
-                    break;
-                case 'F':
-                    gradeColor = Color.Red;
-                    break;
-            }
-
-            return gradeColor;
+            // Display grade result on form
+            finalGradeValueLabel.Text = letterGrade;
+            finalGradeValueLabel.ForeColor = gradeColor;
         }
 
         // Exit application

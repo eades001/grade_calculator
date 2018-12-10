@@ -132,9 +132,8 @@
             this.nameValueLabel.ForeColor = System.Drawing.Color.Navy;
             this.nameValueLabel.Location = new System.Drawing.Point(47, 70);
             this.nameValueLabel.Name = "nameValueLabel";
-            this.nameValueLabel.Size = new System.Drawing.Size(112, 21);
+            this.nameValueLabel.Size = new System.Drawing.Size(0, 21);
             this.nameValueLabel.TabIndex = 5;
-            this.nameValueLabel.Text = "Lynn Eades";
             // 
             // classNameValueLabel
             // 
@@ -143,9 +142,8 @@
             this.classNameValueLabel.ForeColor = System.Drawing.Color.Navy;
             this.classNameValueLabel.Location = new System.Drawing.Point(47, 138);
             this.classNameValueLabel.Name = "classNameValueLabel";
-            this.classNameValueLabel.Size = new System.Drawing.Size(74, 21);
+            this.classNameValueLabel.Size = new System.Drawing.Size(0, 21);
             this.classNameValueLabel.TabIndex = 6;
-            this.classNameValueLabel.Text = "CSharp";
             // 
             // semesterValueLabel
             // 
@@ -154,9 +152,8 @@
             this.semesterValueLabel.ForeColor = System.Drawing.Color.Navy;
             this.semesterValueLabel.Location = new System.Drawing.Point(47, 201);
             this.semesterValueLabel.Name = "semesterValueLabel";
-            this.semesterValueLabel.Size = new System.Drawing.Size(86, 21);
+            this.semesterValueLabel.Size = new System.Drawing.Size(0, 21);
             this.semesterValueLabel.TabIndex = 7;
-            this.semesterValueLabel.Text = "Fall 2018";
             // 
             // studentPictureBox
             // 
@@ -210,7 +207,7 @@
             this.calculateGradeButton.TabIndex = 12;
             this.calculateGradeButton.Text = "Calculate Grade";
             this.calculateGradeButton.UseVisualStyleBackColor = false;
-            this.calculateGradeButton.Click += new System.EventHandler(this.calculateGradeButton_Click);
+            this.calculateGradeButton.Click += new System.EventHandler(this.CalculateGradeButton_Click);
             // 
             // openFileDialog1
             // 
@@ -238,6 +235,7 @@
             this.Controls.Add(this.classNameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.fileAccessMenuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.fileAccessMenuStrip;
             this.Name = "Form1";
             this.Text = "Grade Calculator";
