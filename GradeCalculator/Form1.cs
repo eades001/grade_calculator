@@ -74,11 +74,14 @@ namespace GradeCalculator
                     semesterValueLabel.Text = "";
                     studentPictureBox.Image = null;
 
-                    // Show a message to user that something went wrong reading file or contents
+                    // Show a message to user that something went wrong reading file or its contents
                     MessageBox.Show("ERROR!\nUnable to read student file or its contents.\nPlease try again.");
                 } finally {
-                    // Close the stream
-                    inFile.Close();
+                    // Close the stream if it exists
+                    if (inFile != default(StreamReader))
+                    {
+                        inFile.Close();
+                    }
                 }
             }
         }
