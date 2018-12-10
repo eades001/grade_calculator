@@ -9,13 +9,25 @@ using System.Windows.Forms;
 /*  Date:        12/10/2018              */
 /*****************************************/
 
+
+/* Expected student files contain a single line of data comma-deliminated   */
+/* Data should be found in the following order:                             */
+/* student_name,class_name,semester,image_filename,                         */
+/*              p1_grade,p2_grade,p3_grade,p4_grade,                        */
+/*              p5_grade,p6_grade,midterm_grade,final_grade                 */
+/* Example data:                                                            */
+/* Lynn Eades,CSharp,Fall 2018,lynn.eades.jpg,90,100,90,85,90,90,90,80      */
+/*                                                                          */
+/* Image files are expected to be in the same directory as the data files   */
+
+
 namespace GradeCalculator
 {
     public partial class Form1 : Form
     {
         private const int TOTAL_GRADE_POINTS_POSSIBLE = 800;
 
-        private double[] grades;             // Will hold student's project/exam grades
+        private double[] grades;             // Will hold student grades
         private GradeCalculator calculator;  // Handles all the calculations
         private StreamReader inFile;         // For reading student data from file
 
